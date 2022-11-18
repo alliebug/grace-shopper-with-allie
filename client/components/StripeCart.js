@@ -12,6 +12,7 @@ class Cart extends React.Component {
     };
     this.handleRemove = this.handleRemove.bind(this);
     this.handleQtyUpdate = this.handleQtyUpdate.bind(this);
+    this.handleCheckout = this.handleCheckout.bind(this);
   }
 
   handleRemove(item) {
@@ -24,6 +25,11 @@ class Cart extends React.Component {
     if (newQty) {
       this.props.updateQty(newQty, item);
     }
+  }
+  handleCheckout(cart) {
+    console.log('hi');
+    console.log(cart);
+    this.props.checkoutCart(cart);
   }
 
   async componentDidMount() {
@@ -141,11 +147,15 @@ class Cart extends React.Component {
                   <h2>Order Total: ${cartPrice}</h2>
                 </div>
               </div>
-              <form action="/api/stripe/create-checkout-session" method="POST">
-                <button className="checkout-button" type="submit">
-                  Checkout
-                </button>
-              </form>
+              {/* <form action="/api/stripe/create-checkout-session" method="POST"> */}
+              <button
+                className="checkout-button"
+                type="submit"
+                onClick={() => handleCheckout(cart)}
+              >
+                Checkout
+              </button>
+              {/* </form> */}
             </div>
           ) : (
             <h3>Your cart is empty.</h3>
@@ -172,6 +182,7 @@ const mapDispatch = (dispatch, { history }) => {
     getExistingOrder: (orderId) => dispatch(getOrder(orderId)),
     getOrderByUser: () => dispatch(getOrderByUser()),
     updateQty: (newQty, item) => dispatch(updateQty(newQty, item, history)),
+    checkoutCart: (cart) => dispatch(checkoutCart(cart)),
   };
 };
 

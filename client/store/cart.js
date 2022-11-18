@@ -71,6 +71,25 @@ export const updateQty = (newQty, item, history) => {
   };
 };
 
+//stripe checkout
+export const checkoutCart = (cart) => {
+  return async () => {
+    try {
+      const res = await axios.post(
+        '/api/stripe/create-checkout-session',
+        cart,
+        {
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
+      //console.log(res.data.url);
+      window.location.assign(res.data.url);
+    } catch (error) {
+      console.log('checkoutCart ERROR: ', error);
+      throw error;
+    }
+  };
+};
 const initialState = [];
 
 export default function cartReducer(state = initialState, action) {
