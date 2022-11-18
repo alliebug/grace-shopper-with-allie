@@ -1,8 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchCart, removeItem, updateQty, checkoutCart } from '../store/cart';
-import { createOrder, getOrder, getOrderByUser } from '../store';
+import {
+  fetchCart,
+  removeItem,
+  updateQty,
+  checkoutCart,
+  _setCart,
+} from '../store/cart';
+import { createOrder, getOrder, getOrderByUser, _getOrder } from '../store';
 
 class Cart extends React.Component {
   constructor() {
@@ -27,9 +33,18 @@ class Cart extends React.Component {
     }
   }
   handleCheckout(cart) {
-    console.log('hi');
-    console.log(cart);
-    this.props.checkoutCart(cart);
+    let letUserCheckOut = true;
+    this.props.cart.forEach((element) => {
+      const stock = element.product.quantity;
+      const to_buy = element.num_items;
+      if (stock < to_buy) letUserCheckOut = false;
+    });
+
+    if (letUserCheckOut) {
+      this.props.checkoutCart(cart);
+    } else {
+      window.alert("We can't sell things we don't have!");
+    }
   }
 
   async componentDidMount() {
@@ -183,6 +198,8 @@ const mapDispatch = (dispatch, { history }) => {
     getOrderByUser: () => dispatch(getOrderByUser()),
     updateQty: (newQty, item) => dispatch(updateQty(newQty, item, history)),
     checkoutCart: (cart) => dispatch(checkoutCart(cart)),
+    clearCart: () => dispatch(_setCart([])),
+    clearOrder: () => dispatch(_getOrder({})),
   };
 };
 

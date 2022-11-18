@@ -7,7 +7,7 @@ const ADD_ITEM = 'ADD_ITEM';
 const REMOVE_ITEM = 'REMOVE_ITEM';
 const UPDATE_QTY = 'UPDATE_QTY';
 
-const _setCart = (cart) => ({ type: SET_CART, cart });
+export const _setCart = (cart) => ({ type: SET_CART, cart });
 const _addItem = (item) => ({ type: ADD_ITEM, item });
 const _removeItem = (removedItem) => ({ type: REMOVE_ITEM, removedItem });
 const _updateQty = (item) => ({ type: UPDATE_QTY, item });

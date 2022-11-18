@@ -9,7 +9,16 @@ module.exports = app;
 app.use(morgan('dev'));
 
 // body parsing middleware
-app.use(express.json());
+app.use(
+  express.json({
+    verify: function (req, res, buf) {
+      var url = req.originalUrl;
+      if (url.startsWith('/api/stripe/webhook')) {
+        req.rawBody = buf.toString();
+      }
+    },
+  })
+);
 
 app.use(
   cors({ origin: ['http://localhost:8080', 'https://checkout.stripe.com'] })

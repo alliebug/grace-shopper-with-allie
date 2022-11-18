@@ -9,9 +9,9 @@ const FULFILL_ORDER = 'FULFILL_ORDER';
 const SET_USER_ORDER = 'SET_USER_ORDER';
 
 const _createOrder = (order) => ({ type: CREATE_ORDER, order });
-const _getOrder = (order) => ({ type: GET_ORDER, order });
+export const _getOrder = (order) => ({ type: GET_ORDER, order });
 const _fulfillOrder = (order) => ({ type: FULFILL_ORDER, order });
-
+const _setUserOrder = (order) => ({ type: SET_USER_ORDER, order });
 // createOrder()
 export const createOrder = (setUserId) => {
   return async (dispatch) => {
