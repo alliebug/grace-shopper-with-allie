@@ -109,9 +109,9 @@ form {
   height: 500px;
 }
 
-#checkout form {
+/* #checkout form {
   height: 550px;
-}
+} */
 
 /* additional form styling for Auth component */
 #auth form {

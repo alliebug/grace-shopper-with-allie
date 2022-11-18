@@ -13,6 +13,7 @@ import AdminAllProducts from './components/AdminAllProducts';
 import CreateOrUpdateProduct from './components/CreateOrUpdateProduct';
 import CheckoutPage from './components/CheckoutPage';
 import ConfirmationPage from './components/ConfirmationPage';
+import StripeCart from './components/StripeCart';
 
 /**
  * COMPONENT
@@ -31,7 +32,7 @@ class Routes extends Component {
             <Route exact path="/home" component={Home} />
             <Route exact path="/shop" component={AllProducts} />
             <Route path="/shop/products/:productId" component={SingleProduct} />
-            <Route exact path="/cart/:orderId" component={Cart} />
+            <Route exact path="/cart/:orderId" component={StripeCart} />
             <Route exact path="/checkout" component={CheckoutPage} />
             <Route path="/checkout/confirmation" component={ConfirmationPage} />
             <Redirect to="/home" />
@@ -58,7 +59,7 @@ class Routes extends Component {
             <Route path="/signup" component={Signup} />
             <Route exact path="/shop" component={AllProducts} />
             <Route path="/shop/products/:productId" component={SingleProduct} />
-            <Route exact path="/cart/:orderId" component={Cart} />
+            <Route exact path="/cart/:orderId" component={StripeCart} />
             <Route exact path="/checkout" component={CheckoutPage} />
             <Route path="/checkout/confirmation" component={ConfirmationPage} />
           </Switch>

@@ -11,7 +11,6 @@ const SET_USER_ORDER = 'SET_USER_ORDER';
 const _createOrder = (order) => ({ type: CREATE_ORDER, order });
 const _getOrder = (order) => ({ type: GET_ORDER, order });
 const _fulfillOrder = (order) => ({ type: FULFILL_ORDER, order });
-const _setUserOrder = (order) => ({ type: SET_USER_ORDER, order });
 
 // createOrder()
 export const createOrder = (setUserId) => {
@@ -83,7 +82,6 @@ export const fullfillOrder = (order) => {
     }
   };
 };
-
 export const updateOrder = (orderId, requiredUpdate) => {
   return async (dispatch) => {
     try {

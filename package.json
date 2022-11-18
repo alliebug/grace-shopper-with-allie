@@ -20,15 +20,18 @@
   "author": "Lauren Baca, Allie Wang, Siyun Feng, and Christine Zheng (who is last but also not least)",
   "license": "MIT",
   "dependencies": {
+    "@stripe/stripe-js": "^1.35.0",
     "axios": "^0.21.1",
     "bcrypt": "^5.0.0",
     "compression": "^1.7.3",
+    "dotenv": "^16.0.3",
     "express": "^4.16.4",
     "history": "^4.9.0",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1",
     "pg": "^8.5.1",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "stripe": "^11.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
