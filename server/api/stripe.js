@@ -3,8 +3,7 @@ module.exports = router;
 
 require('dotenv').config();
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
-const endpointSecret =
-  'whsec_dd99cebf6e72c78ac924c567192509c13ca6fb0e4b40809083cff01992f334a2';
+const endpointSecret = process.env.END_POINT_SECRET;
 
 const fulfillOrder = (lineItems) => {
   // TODO: fill me in
